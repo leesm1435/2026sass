@@ -1,0 +1,104 @@
+@charset "utf-8";
+
+ul, li {list-style: none;}
+a {text-decoration: none; display: block}
+
+// 변수선언
+$box_center: 0 auto;
+$base_width: 1200px;
+$txt_color_gray : #4e4e4e;
+$txt_color_white : #fff;
+$txt_color_black : #333;
+$bg_color_blue : #00f;
+
+
+// exec.css
+.promotion * {padding: 0; margin: 0;}
+.promotion {
+  width: $base_width;
+  margin: $box_center;
+  position: relative;
+}
+.title_wrap {
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+}
+.title_wrap h3 {
+  font-size: 30px;
+}
+.m_btn {
+  font-size: 16px;
+  border-bottom: 2px solid $txt_color_black;
+  text-align: center;
+  text-decoration: none;
+  color: #111;
+  font-weight: bold;
+  padding-top: 10px;
+}
+.m_btn:hover{
+  text-decoration: none !important;
+}
+.promotion ul {
+  display: flex;
+  justify-content: space-around;
+}
+.promotion ul li {
+  width: 23%;
+  margin: 1% 0px;
+  position: relative;
+  overflow: hidden;
+}
+
+.promotion .c_title {
+  font-size: 19px;
+  font-weight: bold;
+  color: $txt_color_black;
+}
+.promotion .c_title:hover {
+  text-decoration: underline;
+}
+
+.promotion span:first-child {
+  position: absolute;
+  padding: 1px 10px;
+  background: $bg_color_blue;
+  color: $txt_color_white;
+}
+
+.promotion ul li a:last-child {
+  margin-top: 10px;
+  color: $txt_color_gray;
+  display: block;
+  font-size: 14px;
+}
+.promotion a:last-child:hover {
+  text-decoration: underline;
+}
+
+.promotion img {
+  width: 100%;
+  display: block;
+}
+
+.promotion ul li > a:first-child {
+  display: block;
+  position: relative;
+  overflow: hidden;
+}
+
+@mixin filter {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.3), transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+.promotion ul li > a:first-child::after {
+  @include filter;
+}
+.promotion ul li > a:first-child:hover::after {
+  opacity: 1;
+}

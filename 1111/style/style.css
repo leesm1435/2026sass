@@ -1,0 +1,11 @@
+:root {
+  --t_color:#0f0;
+}
+
+h3 {
+  background: var(--t_color);
+}
+
+body {
+  color: #f00;
+}/*# sourceMappingURL=style.css.map */

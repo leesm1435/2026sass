@@ -1,0 +1,159 @@
+
+@charset "utf-8";
+
+/* 초기화 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul, li {
+  list-style: none;
+}
+
+/* 공통 믹스인 */
+
+/* 가운데 정렬 */
+@mixin center {
+  margin: 0 auto;
+}
+
+/* 글자 스타일 */
+@mixin text-style($size, $color, $weight: normal) {
+  font-size: $size;
+  color: $color;
+  font-weight: $weight;
+}
+
+/* 이미지 스타일 */
+@mixin img-style($width, $height) {
+  width: $width;
+  height: $height;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+/* 상품 제목 */
+@mixin title-style {
+  @include text-style(14px, #111, bold);
+  line-height: 21px;
+}
+
+/* 상품 가격 */
+@mixin price-style {
+  @include text-style(14px, red, bold);
+  margin-top: auto;
+  text-align: right;
+}
+
+/* 전체 영역 */
+section {
+  width: 1080px;
+  @include center;
+}
+
+/* 상단 제목 */
+h2 {
+  width: 100%;
+  height: 55px;
+  line-height: 55px;
+  background: #45a2ca;
+  color: #fff;
+  font-size: 24px;
+  text-align: center;
+}
+
+/* 상품 목록 */
+ul {
+  width: 100%;
+  padding: 26px 20px 16px;
+  display: grid;
+  grid-template-columns: 545px 475px;
+  grid-template-rows: repeat(3, 161px);
+  column-gap: 20px;
+  row-gap: 14px;
+}
+
+/* 상품 공통 */
+li {
+  display: flex;
+  gap: 20px;
+  min-width: 0;
+}
+
+/* 상품 이미지 */
+li img {
+  @include img-style(215px, 161px);
+}
+
+/* 상품 설명 영역 */
+li div {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 상품 제목 */
+.sub_title {
+  @include title-style;
+}
+
+/* 상품 부가 설명 */
+.sub_title2 {
+  @include text-style(13px, #999);
+  line-height: 19px;
+  margin-top: 10px;
+}
+
+/* 상품 가격 */
+.price {
+  @include price-style;
+}
+
+/* 첫 번째 큰 상품 */
+li:first-child {
+  grid-column: 1;
+  grid-row: 1 / 4;
+  flex-direction: column;
+  gap: 25px;
+}
+
+li:first-child img {
+  @include img-style(545px, 333px);
+}
+
+li:first-child div {
+  width: 100%;
+}
+
+li:first-child .sub_title {
+  line-height: 22px;
+}
+
+li:first-child .price {
+  margin-top: 32px;
+}
+
+/* 두 번째 상품 */
+li:nth-child(2) {
+  grid-column: 2;
+  grid-row: 1;
+  border-bottom: 1px solid #bbb;
+  padding-bottom: 12px;
+}
+
+/* 세 번째 상품 */
+li:nth-child(3) {
+  grid-column: 2;
+  grid-row: 2;
+  border-bottom: 1px solid #bbb;
+  padding-bottom: 12px;
+}
+
+/* 네 번째 상품 */
+li:nth-child(4) {
+  grid-column: 2;
+  grid-row: 3;
+}

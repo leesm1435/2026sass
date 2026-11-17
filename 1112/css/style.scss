@@ -1,0 +1,16 @@
+@charset "utf-8";
+
+// 변수명 : 값;
+$bg_color : #ff0;
+$bg_color1 : #ccc;
+$margin_none: 0px;
+
+h2 {
+  background: $bg_color;
+}
+p {
+  background: $bg_color1;
+}
+dd {
+  margin: $margin_none;
+}

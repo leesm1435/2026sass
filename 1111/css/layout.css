@@ -1,0 +1,69 @@
+@charset "utf-8";
+
+/* 
+  layout.css 레이아웃 서석 
+  2번 방법론 SMACSS
+*/
+
+header, main, footer {
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+header {
+  width: 100%; height: 100px;
+  background: #ccc;
+}
+
+main {
+  clear: both;
+  overflow-x: hidden;
+  margin: 20px 0;
+}
+
+footer {
+  width: 100%;
+  padding: 10px 0;
+  background: var(--base_color) ;
+  color: #fff;
+}
+
+/* 방법론 1. OOCSS방식 */
+.btn {
+  width: 230px; height: 40px;
+  border: 1px solid purple;
+  border-radius: 3px;
+}
+.login{
+  background: purple;
+  color: #fff;
+}
+.join{
+  background: #fff;
+  color: purple;
+}
+
+/* 방법론 3. BEM방식으로 서식적용 */
+.search-form {
+  border: 3px solid #00f;
+}
+
+.search-form .btn {
+  border: none;
+  margin-bottom: 5px;
+}
+.search-form__btn {
+  background: #ccc;
+  border: 1px solid #333;
+  border-radius: 2px;
+}
+.search-form__btn__reset {
+  background: #fff000;
+}
+.search-form__btn__reserve {
+  background: #00ff00;
+}
+.search-form__btn__reserve__dark {
+  background: #333;
+  color: #fff;
+}

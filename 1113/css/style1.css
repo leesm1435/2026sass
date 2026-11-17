@@ -1,0 +1,98 @@
+.sns {
+  display: flex;
+  width: 200px;
+  justify-content: space-around;
+  font-size: 30px;
+  color: #333;
+}
+
+.sns li {
+  list-style: none;
+}
+
+.sns i {
+  transition: 0.3s;
+}
+
+.sns li i:hover {
+  color: #f00;
+  font-size: 34px;
+  transform: translateY(-5px);
+}
+
+#box01 {
+  background: #0f0;
+  border: 3px solid #f00;
+}
+
+#box02 {
+  background: #ff0;
+  border: 3px solid #00f;
+}
+
+.btn {
+  width: 200px;
+  height: 40px;
+  border: 1px solid #ccc;
+  text-align: center;
+  cursor: pointer;
+}
+
+.btn1 {
+  color: #fff;
+  background: #5f0080;
+}
+
+.btn2 {
+  color: #fff;
+  background: #0bad0b;
+}
+
+.btn3 {
+  color: #333;
+  background: #ff0;
+}
+
+.list01 li {
+  border: 1px solid #ccc;
+}
+
+.list01 li:nth-child(2) {
+  border: 3px solid #f00;
+}
+
+.list01 li:nth-child(3) {
+  border: 3px double #00f;
+}
+
+.list01 li:nth-child(4) {
+  border: 2px dotted #0f0;
+}
+
+.list01 li:last-child {
+  border: 4px dashed #ff0;
+}
+
+.calender {
+  border: 1px solid #00f;
+  width: 600px;
+  border-collapse: collapse;
+}
+
+.calender caption {
+  background: #ff0;
+  padding: 10px 0px;
+  font-weight: bold;
+}
+
+.calender th, .calender td {
+  border: 1px solid #00f;
+}
+
+.calender tr:nth-child(2n+1) {
+  background: white;
+}
+
+.calender tr:nth-child(2n) {
+  background: skyblue;
+}/*# sourceMappingURL=style1.css.map */

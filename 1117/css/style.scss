@@ -1,0 +1,54 @@
+@charset "utf-8";
+
+// style.scss
+// 디바이스별 해상도 기준
+$width1: 1200px; //pc 해상도
+$width2: 1024px; //tablet 해상도
+$width2_1: 768px; //tablet-s 해상도
+$width3: 390px; //mobile 해상도
+
+// div 기본서식
+@mixin box {
+  height: 50px;
+  border: 3px solid #000;
+  margin-bottom: 20px;
+}
+
+// div태그에 box 믹스인 함수 적용
+div {@include box};
+
+.pc {
+  width: $width1;
+  //$width1값이 500이상이면 핑크, 이하면 블루
+  background: if($width1>=500, pink, lightblue);
+}
+.tablet {
+  width: $width2;
+  //$width2값이 500이상이면 핑크, 이하면 블루
+  background: if($width2>=500, pink, lightblue);
+}
+.mobile {
+  width: $width3;
+  //$width3값이 500이상이면 핑크, 이하면 블루
+  background: if($width3>=500, pink, lightblue);
+}
+
+// 실습2
+.box03 {
+  //width: $width2_1; //768px
+  $width4:767px;
+  @if ($width4 >= 768) { //테블릿 해상도일 경우
+    background: pink; 
+  } @else {
+    background: #ff0;
+  }
+}
+
+.box04 {
+  width: $width2; //1024px
+  @if ($width2 >= 1024) {
+    background: #ff0;
+  } @else {
+    background: #ccc;
+  }
+}

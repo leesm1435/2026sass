@@ -1,0 +1,179 @@
+/* 구글 웹폰트 (가독성 좋은 Pretendard & 코드 느낌의 Fira Code) */
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@500;600&display=swap');
+
+:root {
+  --sass-pink: #cc6699;
+  --sass-pink-dark: #a84878;
+  --sass-pink-light: #fdf2f7;
+  --bg-color: #f8f9fa;
+  --card-bg: #ffffff;
+  --text-main: #2b2d42;
+  --text-sub: #6c757d;
+  --border-color: #e9ecef;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  line-height: 1.6;
+  padding-bottom: 60px;
+}
+
+/* 상단 헤더 영역 */
+header {
+  background: linear-gradient(135deg, #2b2d42 0%, #1d1e2c 100%);
+  color: #ffffff;
+  padding: 56px 20px;
+  text-align: center;
+  border-bottom: 5px solid var(--sass-pink);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  margin-bottom: 40px;
+}
+
+header h1 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  margin-bottom: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* 타이틀 앞 SASS 스타일 배지 */
+header h1::before {
+  content: '$SASS';
+  font-family: 'Fira Code', monospace;
+  font-size: 1rem;
+  background-color: var(--sass-pink);
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+header p {
+  font-size: 1.05rem;
+  color: #cbd5e1;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* 메인 목차 컨테이너 */
+main {
+  max-width: 840px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* 일차별 카드 스타일 */
+dl {
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+dl:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(204, 102, 153, 0.12);
+}
+
+/* 일차 제목 (dt) */
+dt {
+  background-color: var(--sass-pink-light);
+  color: var(--sass-pink-dark);
+  font-weight: 700;
+  font-size: 1.1rem;
+  padding: 16px 24px;
+  border-bottom: 1px solid rgba(204, 102, 153, 0.2);
+  border-left: 5px solid var(--sass-pink);
+}
+
+/* 세부 학습 항목 (dd) */
+dd {
+  border-bottom: 1px solid var(--border-color);
+}
+
+dd:last-child {
+  border-bottom: none;
+}
+
+/* 링크 스타일 */
+dd a {
+  display: flex;
+  align-items: center;
+  padding: 15px 24px;
+  text-decoration: none;
+  color: var(--text-main);
+  font-size: 0.98rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+/* 링크 앞 코드 기호 아이콘 */
+dd a::before {
+  content: '@';
+  font-family: 'Fira Code', monospace;
+  color: var(--sass-pink);
+  font-weight: 600;
+  margin-right: 12px;
+  font-size: 1.05rem;
+  transition: transform 0.2s ease;
+}
+
+/* 우측 화살표 표시 */
+dd a::after {
+  content: '→';
+  margin-left: auto;
+  color: #adb5bd;
+  font-weight: bold;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+/* 마우스 호버 효과 */
+dd a:hover {
+  background-color: #fafafa;
+  color: var(--sass-pink);
+  padding-left: 30px;
+}
+
+dd a:hover::before {
+  transform: scale(1.2);
+}
+
+dd a:hover::after {
+  color: var(--sass-pink);
+  transform: translateX(4px);
+}
+
+/* 반응형 (모바일) */
+@media (max-width: 600px) {
+  header {
+    padding: 40px 16px;
+  }
+  header h1 {
+    font-size: 1.7rem;
+  }
+  dt {
+    font-size: 1rem;
+    padding: 14px 18px;
+  }
+  dd a {
+    padding: 14px 18px;
+    font-size: 0.92rem;
+  }
+}

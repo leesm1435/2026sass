@@ -1,0 +1,100 @@
+@charset "UTF-8";
+.title01 {
+  color: #f00;
+  background: #ff0;
+}
+
+.title02 {
+  color: #f00;
+  background: #ff0;
+  color: #00f;
+}
+
+.title01:hover, .title02:hover {
+  border: 2px solid #000;
+}
+
+.p01 {
+  width: 350px;
+  border: 1px solid #f00;
+  background: #ff0;
+  overflow: hidden; /*영역을 벗어나면 숨기기*/
+  white-space: nowrap; /* 글자를 무조건 한줄로 나오게*/
+  text-overflow: ellipsis; /* 생략기호 나오게*/
+}
+
+.reset_btn {
+  font-family: "Noto Sans";
+  font-weight: bold;
+  font-size: 20px;
+  border: 1px solid #0f0;
+  padding: 0px 10px;
+  width: 170px;
+  height: 56px;
+}
+
+.cart_btn {
+  font-family: "Noto Sans";
+  font-weight: bold;
+  font-size: 20px;
+  border: 1px solid #0f0;
+  padding: 0px 10px;
+  width: 170px;
+  height: 56px;
+  background: #5f0080;
+  color: #fff;
+}
+
+.toggle_btn, .toggle {
+  width: 40px;
+  height: 40px;
+  display: block;
+  border: 1px solid #0f0;
+  position: relative;
+}
+
+.bar {
+  position: absolute;
+  display: inline-block;
+  width: 38px;
+  height: 3px;
+  left: 1px;
+  background: #333;
+  transition: 0.3s;
+}
+
+.bar1, .toggle span:first-child {
+  top: 5px;
+}
+
+.bar2, .toggle span:nth-child(2) {
+  top: 18px;
+}
+
+.bar3, .toggle span:last-child {
+  bottom: 5px;
+}
+
+#toggle:checked + label > .bar1 {
+  transform: rotate(45deg) translate(10px, 10px);
+}
+
+#toggle:checked + label > .bar2 {
+  display: none;
+}
+
+#toggle:checked + label > .bar3 {
+  transform: rotate(-45deg) translate(10px, -10px);
+}
+
+.act_rotate01 {
+  transform: rotate(45deg) translate(10px, 10px);
+}
+
+.act_none {
+  display: none;
+}
+
+.act_rotate02 {
+  transform: rotate(-45deg) translate(10px, -10px);
+}/*# sourceMappingURL=style1.css.map */

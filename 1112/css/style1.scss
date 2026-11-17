@@ -1,0 +1,129 @@
+@charset "utf-8";
+
+// style1.scss
+
+// 변수선언
+$bg_color_y: #ff0;
+$bg_color_m: #5f0080;
+$bg_color_black :#333;
+$txt_color_r: #f00;
+$txt_color_b: #00f;
+$txt_color_w: #fff;
+$border01: 2px solid #000;
+$line_color_g: #0f0; //선스타일
+
+
+@mixin h3txt {
+  color: $txt_color_r;
+  background: $bg_color_y;
+}
+
+.title01 {
+  @include h3txt;
+}
+
+.title02 {
+  @include h3txt; // 이미 글자색 존재
+  color: $txt_color_b; // 아래 글자색 서식이 젹용됨
+}
+
+.title01:hover, .title02:hover {
+  border: $border01;
+}
+
+// 실습1. 글자 샐력기호(...) 나오게 하는 서식
+@mixin txt_over {
+  overflow: hidden; /*영역을 벗어나면 숨기기*/
+  white-space:nowrap; /* 글자를 무조건 한줄로 나오게*/
+  text-overflow: ellipsis; /* 생략기호 나오게*/
+}
+
+.p01 {
+  width: 350px;
+  border: 1px solid #f00;
+  background: $bg_color_y;
+  @include txt_over;
+}
+
+//1. 버튼 글자서식
+@mixin btn_font {
+  font-family: "Noto Sans";
+  font-weight: bold;
+  font-size: 20px;
+}
+
+//2. 버튼 모양서식
+@mixin btn_area {
+  border: 1px solid $line_color_g;
+  padding: 0px 10px;
+  width: 170px; height: 56px;
+}
+
+//3. 버튼 서식을 합치기
+@mixin btn {
+  @include btn_font;
+  @include btn_area;
+}
+
+.reset_btn {
+  @include btn;
+}
+
+.cart_btn {
+  @include btn;
+  background: $bg_color_m;
+  color: $txt_color_w;
+}
+
+// 토글버튼 서식
+@mixin toggle_btn {
+  width: 40px; height: 40px;
+  display: block;
+  border: 1px solid $line_color_g;
+  position: relative;
+}
+
+@mixin bar {
+  position: absolute;
+  display: inline-block;
+  width: 38px; height: 3px;
+  left: 1px;
+  background: $bg_color_black;
+}
+
+@mixin rotate_45deg {
+  transform: rotate(45deg) translate(10px, 10px);
+}
+
+@mixin rotate_-45deg {
+  transform: rotate(-45deg) translate(10px, -10px);
+}
+
+// bar버튼 서식
+.toggle_btn, .toggle {
+  @include toggle_btn;
+}
+.bar{@include bar; transition: 0.3s};
+
+.bar1, .toggle span:first-child {top: 5px;}
+.bar2, .toggle span:nth-child(2) {top: 18px;}
+.bar3, .toggle span:last-child {bottom: 5px;}
+
+// css로 토글 버튼 서식
+#toggle:checked + label > .bar1{
+  @include rotate_45deg;
+}
+#toggle:checked + label > .bar2{display: none;}
+#toggle:checked + label > .bar3{
+  @include rotate_-45deg;
+}
+
+// 2번 방법 
+.act_rotate01{
+  @include rotate_45deg;
+}
+.act_none{display: none;}
+.act_rotate02{
+  @include rotate_-45deg;
+}
+

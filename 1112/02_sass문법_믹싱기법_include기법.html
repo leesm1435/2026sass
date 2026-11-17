@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/style1.css" type="text/css">
+  <title>02_sass문법_믹싱기법_include기법</title>
+</head>
+<body>
+  <h2>02_sass문법_믹싱기법_include기법</h2>
+  <p>sass의 믹싱기법과 include기법에 대해 학습하기</p>
+
+  <h3>01. $mixin문법</h3>
+  <p>웹사이트 전체에 재사용할 css코드를 정의하는 문</p>
+  <pre>
+    @mixin mixin명 {
+      //반복해서 사용할 스타일 서식을 작성합니다.
+    }
+  </pre>
+
+  <h3>02. $include문법</h3>
+  <p>@mixin을 선택자에 포함하는데 사용하는 지시문</p>
+  <pre>
+    css선택자 {
+      @include mixin명;
+    }
+  </pre>
+
+  <h3 class="title01">h3태그요소를 2개 작성하여 동일한 서식과 다른 서식 적용하기</h3>
+  <h3 class="title02">mixin서식 적용하기</h3>
+  <p>위 h3태그에 배경색:노랑, 글자색:빨강, 파랑 적용하기</p>
+
+  <p class="p01">믹스인 함수(txt_over)를 사용하여 글자 생략기호(...)나오게 하기</p>
+
+  <h3>03. @mixin을 중첩하여 새로운 @mixin만들기</h3>
+  <pre>
+    @mixin 믹스인명 A {
+      //재사용할 스타일 서식을 작성
+    }
+
+    @mixin 믹스인명 B {
+      //재사용할 스타일 서식 작성
+    }
+
+    @mixin 믹스인명 C {
+      @include 믹스인명 A;
+      @include 믹스인명 B;
+    }
+  </pre>
+
+  <p>실습1. 문단태그안에 button요스를 2개 작성하여 각각 다른 버튼 서식 적용하기</p>
+  <button class="reset_btn">취소</button>
+  <button class="cart_btn">장바구니 담기</button>
+
+  <p>실습2. 모바일 토글버튼 구현하기</p>
+  <!-- 1. css로 토글버튼 구현하기 -->
+  <input type="checkbox" id="toggle">
+  <label for="toggle" class="toggle_btn">
+    <span class="bar bar1">&nbsp;</span>
+    <span class="bar bar2">&nbsp;</span>
+    <span class="bar bar3">&nbsp;</span>
+  </label>
+  <!-- 2.js로 토글버튼 구현하기 -->
+  <br>
+  <div class="toggle">
+    <span class="bar bar4">&nbsp;</span>
+    <span class="bar bar5">&nbsp;</span>
+    <span class="bar bar6">&nbsp;</span>
+  </div>
+  <p>.toggle서식을 작성하고 span태그요소에 적용할 @mixin서식을 만든 후 css, javascript로 기능을 구현합니다. 누르면 X, 다시 클릭시 원위치 모양으로 나오게</p>
+
+  <script>
+    const toggle = document.querySelector('.toggle');
+    const bar = document.querySelectorAll('.toggle span')
+    let n = 0;
+
+    toggle.addEventListener('click', () => {
+      if (n == 0) {
+        bar[0].classList.add('act_rotate01');
+        bar[1].classList.add('act_none');
+        bar[2].classList.add('act_rotate02');
+        n = 1;
+      } else {
+        bar[0].classList.remove('act_rotate01');
+        bar[1].classList.remove('act_none');
+        bar[2].classList.remove('act_rotate02');
+        n = 0;
+      }
+    });
+  </script>
+</body>
+</html>

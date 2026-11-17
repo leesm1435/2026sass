@@ -1,0 +1,146 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0;
+}
+
+ul, li {
+  list-style: none;
+}
+
+a {
+  color: #333;
+  text-decoration: none;
+}
+
+header {
+  border-top: 5px solid #009223;
+  text-align: center;
+}
+header > h1 {
+  padding: 10px 0px;
+}
+
+.con_wrap {
+  width: 1170px;
+  margin: 0 auto;
+}
+
+.con_wrap > h2 {
+  font-size: 40px;
+  font-weight: 500;
+  text-align: center;
+  margin: 50px 0px;
+}
+
+.con_wrap ul {
+  width: 100%;
+  border-top: 5px solid #009223;
+  padding: 0px 0px;
+}
+
+.con_wrap ul li {
+  padding: 20px 0px;
+  border-bottom: 1px solid #ccc;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+
+.con_wrap ul li .faq {
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.con_wrap ul li .faq .Q_icon {
+  position: absolute;
+  left: 20px;
+  color: #fff;
+  font-weight: bold;
+  font-size: 18px;
+  width: 30px;
+  height: 30px;
+  background: #009223;
+  text-align: center;
+  align-items: center;
+  border-radius: 15px;
+}
+
+.con_wrap ul li .faq a {
+  position: absolute;
+  left: 100px;
+}
+
+.con_wrap ul li i.fas {
+  position: absolute;
+  right: 20px;
+}
+
+.con_wrap ul li i {
+  transition: 0.5s;
+}
+
+.con_wrap ul li .answer {
+  justify-content: space-between;
+  height: 100px;
+  margin-top: 20px;
+  position: relative;
+  display: none;
+}
+
+.con_wrap ul li .answer .A_icon {
+  color: #fff;
+  position: absolute;
+  left: 20px;
+  font-weight: bold;
+  font-size: 18px;
+  width: 30px;
+  height: 30px;
+  background: #ffce32;
+  text-align: center;
+  align-items: center;
+  border-radius: 15px;
+}
+
+.con_wrap ul li .answer p {
+  width: 85%;
+  position: absolute;
+  left: 100px;
+  top: 0px;
+}
+
+/* FAQ 활성화 상태 */
+.list > li.act {
+  background: #d4d4d4;
+}
+
+.list > li.act .answer {
+  display: block;
+}
+
+.list > li.act .faq > a {
+  color: #009223;
+  font-weight: bold;
+}
+
+footer {
+  background: #333;
+}
+footer > .f_lnb {
+  width: 1170px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: left;
+}
+footer > .f_lnb > li {
+  line-height: 50px;
+  margin: 0px 10px;
+}
+footer > .f_lnb > li > a {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.f_lnb > li:nth-child(2) > a {
+  color: rgba(255, 255, 255, 0.9);
+}/*# sourceMappingURL=sub.css.map */

@@ -1,0 +1,145 @@
+@charset "utf-8";
+
+// sub.scss
+// 1. 변수선언
+$max_width:1170px;
+$box_center:0 auto;
+$main_color01: #009223;
+$main_color02: #ffce32;
+$bg_color01:#333;
+$txt_color01: #7c7c7c;
+$big_font_size: 40px;
+
+* {margin: 0; padding: 0;}
+ul, li {list-style: none;}
+a {color: $bg_color01; text-decoration: none;}
+header{
+  border-top: 5px solid $main_color01;
+  text-align: center;
+  > h1 {
+    padding: 10px 0px;
+  }
+}
+main {}
+.con_wrap {
+  width: $max_width;
+  margin: $box_center;
+}
+.con_wrap > h2 {
+  font-size: $big_font_size;
+  font-weight: 500;
+  text-align: center;
+  margin: 50px 0px
+}
+
+.con_wrap ul {
+  width: 100%;
+  border-top: 5px solid $main_color01;
+  padding: 0px 0px;
+}
+
+.con_wrap ul li {
+  padding: 20px 0px;
+  border-bottom: 1px solid #ccc;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+.con_wrap ul li .faq {
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+}
+.con_wrap ul li .faq .Q_icon {
+  position: absolute;
+  left: 20px;
+  color: #fff;
+  font-weight: bold;
+  font-size: 18px;
+  width: 30px;
+  height: 30px;
+  background: $main_color01;
+  text-align: center;
+  align-items: center;
+  border-radius: 15px;
+}
+.con_wrap ul li .faq a {
+  position: absolute;
+  left: 100px;
+}
+.con_wrap ul li i.fas {
+  position: absolute;
+  right: 20px;
+}
+.con_wrap ul li i {
+  transition: 0.5s;
+}
+
+.con_wrap ul li .answer{
+  justify-content: space-between;
+  height: 100px;
+  margin-top: 20px;
+  position: relative;
+  display: none;
+}
+
+.con_wrap ul li .answer .A_icon {
+  color: #fff;
+  position: absolute;
+  left: 20px;
+  font-weight: bold;
+  font-size: 18px;
+  width: 30px;
+  height: 30px;
+  background: $main_color02;
+  text-align: center;
+  align-items: center;
+  border-radius: 15px;
+}
+.con_wrap ul li .answer p {
+  width: 85%;
+  position: absolute;
+  left: 100px; top: 0px;
+}
+
+/* FAQ 활성화 상태 */
+.list > li.act {
+  background: #d4d4d4;
+}
+
+.list > li.act .answer {
+  display: block;
+}
+
+.list > li.act .faq > a {
+  color: $main_color01;
+  font-weight: bold;
+}
+
+
+// 함수로 글자 색 %적용하기
+@function my_lighten($num) {
+  @return 0.1*$num;
+}
+footer{
+  background: $bg_color01;
+  > .f_lnb {
+    width: $max_width;
+    margin: $box_center;
+    display: flex;
+    justify-content: left;
+    > li {
+      line-height: 50px;
+      margin: 0px 10px;
+      > a {
+        //color: $txt_color01;
+        color: rgba(255, 255, 255, my_lighten(3));
+      }  
+    }
+  }
+}
+
+// f_lnb의 두번째 글자만 밝게
+.f_lnb > li:nth-child(2) > a {
+  color: rgba(255, 255, 255, my_lighten(9));
+}

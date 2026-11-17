@@ -1,0 +1,35 @@
+@charset "utf-8";
+
+/*
+  style1.scss
+  수타일 가이드에서 설정된 색상값, 글꼴에 관련된 서식삭ㅄ, 링크에 관련된 서식값
+*/
+
+// 전역변수
+$myFont: '맑은고딕', arial, sans-serif;
+$baseFontColor: #333;
+$bigFontSize: 30px;
+$baseFontSize: 12px;
+$boxWidth: 1280px;
+$boxCenter: 0px auto;
+$bgColor: #ff0;
+
+body {
+  $p01:#f00; // 지역변수
+  font-family: $myFont;
+  font-size: $baseFontSize;
+  color: $baseFontColor;
+}
+h1 {
+  font-size: $bigFontSize;
+  text-align: center;
+}
+
+// wrap서식
+#wrap {
+  $bgcolor: #0f0;
+  width: $boxWidth;
+  background: $bgcolor;
+  border: 1px solid $bgColor;
+  margin: $boxCenter;
+}

@@ -1,0 +1,11 @@
+
+:root{--t_color:#0f0;}
+
+h3{background: var(--t_color);}
+
+// scss변수생성
+$t_color1:#f00;
+
+body {
+  color: $t_color1;
+}

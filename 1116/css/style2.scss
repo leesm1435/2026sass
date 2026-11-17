@@ -1,0 +1,69 @@
+@charset "utf-8";
+
+// style2.scss
+
+// 1, 변수선언
+$max_width: 1180px;
+
+// 12개으이 그리드 컬럼
+// 박스가 가지는 컬럼에 따라 가로크기가 저정되는 함수를 작성하기
+@function column($number:1, $all:12) {
+  @return $max_width*($number/$all);
+  // 1180 * (1/12)
+}
+
+.wrap {
+  width: $max_width;
+  border: 2px solid #000;
+  margin: 0 auto;
+}
+.box01, .box02, .box03 {
+  height: 100px;
+  margin: 10px 0px;
+}
+.box01 {
+  width: column(1,12);
+  background: #f00;
+}
+.box02 {
+  width: column(6,12);
+  background: #0f0;
+}
+.box03 {
+  width: column(12,12);
+  background: #87ceeb;
+}
+
+// 내장함수로 버튼 서식 적용하기
+// 버튼 배경 변수
+$btnBgColor: #e134ad;
+$btnTxtColor: #fff;
+// 버튼 기본서식
+@mixin btn {
+  border: none;
+  cursor: pointer;
+  padding: 5px 10px;
+  color: $btnTxtColor;
+  border-radius: 5px;
+}
+
+.btn {
+  background: $btnBgColor;
+  @include btn;
+  &.btn2 {
+    background: lighten($color: $btnBgColor, $amount:10%);
+  }
+}
+
+// 함수작성
+@function my-lighten($num) {
+  @return 0.1*$num;
+}
+
+.btn3{opacity: my-lighten(8);}
+.btn4{opacity: my-lighten(6);}
+.btn5{opacity: my-lighten(4);}
+.btn6{opacity: my-lighten(3);}
+.btn7{opacity: my-lighten(2);}
+.btn8{opacity: my-lighten(1);}
+

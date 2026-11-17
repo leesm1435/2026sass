@@ -1,0 +1,75 @@
+@charset "utf-8";
+
+// style1.scss
+div {
+  height: 50px;
+  margin-bottom: 10px;
+  background: pink;
+}
+
+// //1부터 5까지 반복실행
+// @for $i from 1 to 6 {
+//   div:nth-of-type(#{$i}) {
+//     width: 50px*$i;
+//     /*
+//     50*1=50
+//     50*2=100
+//     50*3=150
+//     50*4=200
+//     50*5=250
+//     */
+//   }
+// }
+
+
+//through일 경우
+@for $i from 1 through 6 {
+  div:nth-of-type(#{$i}) {
+    width: 100px*$i; // 100씩 증가
+  }
+}
+
+// 반복문 while문
+$j: 1; // 초기값
+
+.list01 > li {
+  background: orange;
+  margin-bottom: 10px;
+
+  // j 변수가 3보다 작거나 같을 때까지 반복 실행
+  @while $j <= 3 {
+    &:nth-child(#{$j}) {
+      width: 100px * $j;
+    }
+
+    $j:$j+1;
+  }
+}
+
+// Lists배열로 서식적용하기
+$color: red, blue, green;
+
+article {
+  h2:nth-child(1){background: nth($color,1);}
+  h2:nth-child(2){background: nth($color,2);}
+  h2:nth-child(3){background: nth($color,3);}
+}
+
+
+//map배열 서식 적용하기
+$fontSize:('large':30px, 'medium':24px, 'small':18px);
+
+section {
+  h2:nth-child(1) {
+    font-size: map-get($fontSize, 'large');
+    color: nth($color,1);
+  }
+  h3:nth-of-type(1) {
+    font-size: map-get($fontSize, 'medium');
+    color: nth($color,2);
+  }
+  h4:nth-of-type(1) {
+    font-size: map-get($fontSize, 'small');
+    color: nth($color,3);
+  }
+}

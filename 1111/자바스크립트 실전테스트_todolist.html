@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- 폰트어썸 라이브러리 -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css"
+    />
+
+    <title>자바스크립트 실전테스트_todolist</title>
+
+    <style>
+      #add_value {
+        width: 500px;
+        height: 40px;
+        border: 1px solid #ffa500;
+        box-sizing: border-box;
+      }
+
+      #input_btn {
+        width: 40px;
+        height: 40px;
+        border: 1px solid #ffa500;
+        background: #ffa500;
+        color: white;
+        cursor: pointer;
+      }
+
+      /* 목록 전체 */
+      ul {
+        width: 500px;
+        padding: 0;
+        margin: 10px 0;
+        list-style: none;
+      }
+
+      /* 할 일 목록 */
+      ul li {
+        width: 500px;
+        min-height: 50px;
+        padding: 0 10px;
+        box-sizing: border-box;
+        border: 1px solid #ffa500;
+        display: flex;
+        align-items: center;
+        color: #222;
+      }
+
+      /* 왼쪽 원형 표시 */
+      ul li::before {
+        content: "";
+        width: 16px;
+        height: 16px;
+        border: 3px solid #ffa500;
+        border-radius: 50%;
+        box-sizing: border-box;
+        margin-right: 10px;
+        flex-shrink: 0;
+      }
+
+      /* 할 일 내용 */
+      ul li span {
+        cursor: pointer;
+        flex: 1;
+      }
+
+      /* 삭제 버튼 */
+      ul li button {
+        margin-left: auto;
+        padding: 5px 10px;
+        border: none;
+        background: none;
+        font-size: 14px;
+        cursor: pointer;
+        flex-shrink: 0;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h2>자바스크립트 실전테스트_todolist</h2>
+
+    <dl>
+      <dt>오늘의 일정 구현하기</dt>
+      <dd>1. 입력폼과 '추가' 버튼, '글삭제' 버튼 작성</dd>
+      <dd>2. 입력폼에 글 입력하고 추가 버튼 클릭 시 목록 출력</dd>
+      <dd>3. 출력 내용 옆에 삭제 버튼 추가</dd>
+      <dd>4. 삭제 버튼 클릭 시 해당 글 삭제</dd>
+      <dd>5. 목록 글 클릭 시 취소선 표시</dd>
+      <dd>6. 글삭제 버튼 클릭 시 전체 글 삭제</dd>
+    </dl>
+
+    <section>
+      <header>
+        <h2>오늘의 할 일 - todolist(입력, 출력, 삭제)</h2>
+
+        <div class="input_wrap">
+          <input
+            id="add_value"
+            type="text"
+            placeholder="오늘의 일정을 입력하세요."
+          />
+
+          <button type="button" id="input_btn">
+            <i class="fas fa-plus"></i>
+          </button>
+        </div>
+      </header>
+
+      <!-- 메인영역 -->
+      <main>
+        <section>
+          <ul id="result">
+            <!-- 할 일 목록이 출력되는 곳 -->
+          </ul>
+
+          <p>
+            <button id="delete_all_btn">글 모두 삭제</button>
+          </p>
+        </section>
+      </main>
+
+      <!-- 푸터영역 -->
+      <footer>
+        <address>
+          Copyrights&copy;2026 오늘의 할일 allrights reserved.
+        </address>
+      </footer>
+    </section>
+
+    <script>
+      // 1. 변수 선언
+      const inputBtn = document.getElementById("input_btn");
+      const deleteAllBtn = document.getElementById("delete_all_btn");
+      const result = document.querySelector("ul");
+      const addValue = document.getElementById("add_value");
+
+      // 2. 추가 버튼 클릭 이벤트
+      inputBtn.addEventListener("click", () => {
+        addTo();
+      });
+
+      // 3. 글 추가 함수
+      function addTo() {
+        let txt = addValue.value.trim();
+
+        if (txt === "") {
+          alert("글 내용을 입력하세요.");
+        } else {
+          // li 생성
+          let list = document.createElement("li");
+
+          // 글 내용을 담을 span 생성
+          let content = document.createElement("span");
+          content.innerText = txt;
+
+          // 삭제 버튼 생성
+          let del = document.createElement("button");
+          del.innerText = "삭제";
+
+          // 목록에 글 내용과 삭제 버튼 추가
+          list.appendChild(content);
+          list.appendChild(del);
+
+          // ul에 li 추가
+          result.appendChild(list);
+
+          // 입력폼 초기화
+          addValue.value = "";
+
+          // 4. 글 내용 클릭 시 취소선 표시
+          let i = 0;
+
+          content.addEventListener("click", () => {
+            if (i == 0) {
+              content.style.textDecoration = "line-through";
+              content.style.color = "gray";
+              i = 1;
+            } else {
+              content.style.textDecoration = "none";
+              content.style.color = "#333";
+              i = 0;
+            }
+          });
+
+          // 5. 삭제 버튼 클릭 시 해당 글 삭제
+          del.addEventListener("click", function (e) {
+            e.stopPropagation();
+            list.remove();
+          });
+        }
+      }
+
+      // 6. Enter 키로 글 추가
+      addValue.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" && !e.shiftKey) {
+          e.preventDefault();
+          addTo();
+        }
+      });
+
+      // 7. 전체 글 삭제 버튼
+      deleteAllBtn.addEventListener("click", () => {
+        clearAll();
+      });
+
+      // 8. 전체 글 삭제 함수
+      function clearAll() {
+        if (result.children.length === 0) {
+          alert("삭제할 글 목록이 없습니다.");
+          return;
+        }
+
+        if (confirm("정말 삭제하시겠습니까?")) {
+          result.innerHTML = "";
+        }
+      }
+    </script>
+  </body>
+</html>

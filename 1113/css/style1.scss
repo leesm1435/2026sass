@@ -1,0 +1,148 @@
+@charset "utf-8";
+
+// style1.scss
+// 변수선언
+$baseTxtColor: #333;
+$pointTxtColor: #f00;
+
+$time: 0.3s;
+
+// 1.sns서식
+@mixin sns {
+  font-size: 30px;
+  color: $baseTxtColor;
+}
+
+@mixin hover {
+  color: $pointTxtColor;
+  font-size: 34px;
+}
+
+.sns {
+  display: flex;
+  width: 200px;
+  justify-content: space-around;
+  @include sns;
+}
+.sns li {
+  list-style: none; 
+}
+.sns i {
+  transition: $time;
+}
+.sns li i:hover {
+  @include hover;
+  transform: translateY(-5px);
+  
+}
+
+// mixin함수에 매개변수 할당하여 처리하기
+@mixin divBox($bgColor1, $borderColor1) {
+  background: $bgColor1;
+  border: 3px solid $borderColor1;
+}
+
+#box01 {
+  @include divBox(#0f0, #f00);
+}
+#box02 {
+  @include divBox(#ff0, #00f);
+}
+
+// 로그인 버튼 서식
+@mixin loginBtn($bgColor, $txtColor) {
+  color: $txtColor;
+  background: $bgColor;
+}
+
+// 로그인 버튼 공통 서식
+@mixin btn {
+  width: 200px; height: 40px;
+  border: 1px solid #ccc;
+  text-align: center;
+  cursor: pointer;
+}
+.btn {
+  @include btn;
+}
+
+// 마켓컬리 버튼
+.btn1 {
+  @include loginBtn(#5f0080, #fff);
+}
+
+// 네이버 버튼
+.btn2 {
+  @include loginBtn(#0bad0b, #fff)
+}
+
+// 카카오 버튼
+.btn3 {
+  @include loginBtn(#ff0, #333);
+}
+
+// 목록태그에 믹스인 함수 기본값 설정하기
+@mixin borderStyle($w:1px, $s:solid, $c:#ccc) {
+  border: $w $s $c;
+}
+
+.list01 li {
+  @include borderStyle;
+}
+.list01 li:first-child {}
+.list01 li:nth-child(2) {
+  @include borderStyle(3px, solid, #f00);
+}
+.list01 li:nth-child(3) {
+  @include borderStyle(3px, double, #00f)
+}
+.list01 li:nth-child(4) {
+  @include borderStyle(2px, dotted, #0f0)
+}
+.list01 li:last-child {
+  @include borderStyle(4px, dashed, #ff0)
+}
+
+// 실습4. 달력서식
+$tableWidth: 600px;
+
+@mixin border($w:1px, $s:solid, $c:#00f) {
+  border: $w $s $c;
+}
+
+.calender {
+  @include border;
+  width: $tableWidth;
+  border-collapse: collapse;
+}
+
+@mixin caption($bgColor:#ff0) {
+  background: $bgColor;
+  padding: 10px 0px;
+  font-weight: bold;
+}
+
+.calender caption {
+  @include caption;
+}
+.calender th, .calender td {
+  @include border;
+}
+
+
+// 홀수번째, 짝수번째 라인 서식
+@mixin oddTr($bg:#fffa9e) {
+  background: $bg;
+}
+
+@mixin evenTr($bg: #e7dc08) {
+  background: $bg
+}
+
+.calender tr:nth-child(2n+1) {
+  @include oddTr(white);
+}
+
+.calender tr:nth-child(2n) {
+  @include evenTr(skyblue);
+}

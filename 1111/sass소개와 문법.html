@@ -1,0 +1,103 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sass 소개와 문법</title>
+    <link rel="stylesheet" href="./style/style.css">
+  </head>
+  <body>
+    <h2>Sass 소개와 문법</h2>
+
+    <p>Sass - Syntactically Awesome Style Sheets의 줄임말</p>
+    <p>SCSS - Sass의 CSS와 유사한 문법</p>
+    <p>CSS Preprocessor(전처리기)로서 CSS의 반복을 줄여 시간을 절약할 수 있도록 도와주는 CSS 확장 언어이다.</p>
+    <p>CSS를 좀 더 효율적으로 작성하고 유지보수하기 쉽게 만들어 준다.</p>
+    <p>장점 : 변수 및 조건문 등의 새로운 문법을 통해 CSS를 구조화하여 작업할 수 있다.</p>
+    <p>단점 : 문법을 잘못 사용하면 코드가 복잡해질 수 있으며, 코드가 많아질수록 유지보수가 어려워질 수 있다.</p>
+    <p>Sass 공식 사이트에서 다양한 설치 방법을 확인할 수 있으며, GUI 또는 CLI 방식의 프로그램을 선택하여 사용할 수
+      있다.</p>
+    <p>VS Code에서는 별도의 확장 프로그램인 Live Sass Compiler를 지원하기 때문에 왼쪽 메뉴의 Extensions(확장
+      프로그램)를 클릭하여 설치하고 사용할 수 있다.</p>
+
+    <h3>1. Sass와 SCSS 문법의 차이점</h3>
+
+    <dl>
+      <dt>SASS 문법</dt>
+      <dd>중괄호({})와 세미콜론(;)을 사용하지 않는다.</dd>
+      <dd>들여쓰기(Tab 키)를 사용하여 코드 구조를 나타낸다.</dd>
+      <dd>구문이 더 간결하고 Python 스타일과 비슷하다.</dd>
+    </dl>
+
+    <pre>
+Sass 작성 예시)
+
+$primary-color: #3498db
+
+body
+    background: $primary-color
+    color: #fff
+
+nav
+    ul
+        margin: 0px
+        padding: 0px
+
+        li
+            list-style: none
+            margin-right: 10px
+    </pre>
+
+    <dl>
+      <dt>SCSS 문법</dt>
+      <dd>CSS 문법과 매우 유사하다.</dd>
+      <dd>중괄호({})와 세미콜론(;)을 사용한다.</dd>
+      <dd>기존 CSS와 호환성이 높아 쉽게 사용할 수 있다.</dd>
+    </dl>
+
+    <pre>
+SCSS 작성 예시)
+
+$primary-color: #3498db;
+
+body {
+    background: $primary-color;
+    color: #fff;
+}
+
+nav {
+    ul {
+        margin: 0px;
+        padding: 0px;
+    }
+
+    li {
+        list-style: none;
+        margin-right: 10px;
+    }
+}
+    </pre>
+
+    <h3>2. Sass와 SCSS 중 어느 것을 작성하는 것이 좋을까?</h3>
+
+    <dl>
+      <dt>SCSS 권장:</dt>
+      <dd>CSS와 문법이 거의 같아 기존 CSS 코드와 함께 사용하기 쉽다.</dd>
+      <dd>팀원들이 CSS에 익숙하다면 SCSS를 더 쉽게 받아들일 수 있다.</dd>
+      <dd>Sass의 다양한 기능을 사용할 수 있으며, 기존 CSS와의 호환성도 뛰어나다.</dd>
+      <dd>협업 및 유지보수에 유리하다.</dd>
+
+      <dt>SASS 사용 이유 :</dt>
+      <dd>더 간결한 문법을 선호하는 경우 사용하기 좋다.</dd>
+      <dd>기존 들여쓰기 방식의 Sass 문법을 사용하는 프로젝트에 적합하다.</dd>
+
+      <dt>결론</dt>
+      <dd>일반적으로 SCSS 사용을 권장한다.</dd>
+      <dd>CSS와 유사한 문법으로 작성할 수 있어 학습하기 쉽다.</dd>
+      <dd>유지보수 및 협업에 유리하다.</dd>
+      <dd>다양한 Sass 기능을 활용할 수 있다.</dd>
+    </dl>
+
+  </body>
+</html>

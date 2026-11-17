@@ -1,0 +1,22 @@
+@charset "UTF-8";
+/*
+  style1.scss
+  수타일 가이드에서 설정된 색상값, 글꼴에 관련된 서식삭ㅄ, 링크에 관련된 서식값
+*/
+body {
+  font-family: "맑은고딕", arial, sans-serif;
+  font-size: 12px;
+  color: #333;
+}
+
+h1 {
+  font-size: 30px;
+  text-align: center;
+}
+
+#wrap {
+  width: 1280px;
+  background: #0f0;
+  border: 1px solid #ff0;
+  margin: 0px auto;
+}/*# sourceMappingURL=style1.css.map */
